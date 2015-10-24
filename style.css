@@ -6,11 +6,19 @@ h1{
 td{
   border: 2px solid black;
   padding: 5px;
+  border-radius: 10px;
+  background-color: lemonchiffon;
   text-align: center;
   font-weight: bold;
-  border-radius: 10px;
+  color: lemonchiffon;
+  cursor: pointer;
 }
 .table{
   width: 50%;
   border-spacing: 20px;
+}
+.content{
+  text-align: center;
+  font-weight: bold;
+  color: black;
 }
