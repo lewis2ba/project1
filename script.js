@@ -1,8 +1,8 @@
 $(document).ready(function(){
   var cardNums = []
-  var matches=0;
-  var numOfClicks = 0;
-  var clickCounter=0;
+  var matches=0
+  var numOfClicks = 0
+  var clickCounter=0
   click = true
   values = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8]
   shuffle(values)
@@ -12,7 +12,7 @@ $(document).ready(function(){
   console.log(values)
 $('td').on("click",chooseCard)
 $('.button').on("click",resetBoard)
-
+$('#animate').css('visibility','hidden')
   function chooseCard(){
     $(this).off("click")
     numOfClicks++;
@@ -53,13 +53,32 @@ $('.button').on("click",resetBoard)
     }
   }
   function winGame(numOfClicks){
-    alert("Congratulations, you win! You won the game in " + numOfClicks +" clicks." )
-    resetBoard()
+    $('#animate').css('visibility','visible')
+    $('#animate').text("Congratulations! You won in "+numOfClicks+" clicks!")
+    //alert("Congratulations, you win! You won the game in " + numOfClicks +" clicks." )
+    var width = $(document).width()-160;
 
+     function goRight() {
+         $("#animate").animate({
+         left: width
+       }, 5000, function() {
+          setTimeout(goLeft, 50);
+       });
+     }
+     function goLeft() {
+         $("#animate").animate({
+         left: 0
+       }, 5000, function() {
+          setTimeout(goRight, 50);
+       });
+     }
+     setTimeout(goRight, 50);
+     setTimeout(function(){resetBoard()},5000)
   }
     function resetBoard(){
       $('td').removeAttr("class","content")
       $('td').css('visibility','visible')
+      $('#animate').css('visibility','hidden')
       numOfClicks = 0
       $('#clicks').text(numOfClicks)
       matches = 0

@@ -23,6 +23,14 @@ td{
   cursor: pointer;
   height: 65px;
   width: 35px;
+
+  /*below makes the hidden text in the table unselectable so the user cant cheat*/
+  -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
 }
 .table{
   width: 60%;
@@ -47,4 +55,13 @@ html{
   background-color: #336B87;
   width: 35%;
   margin: auto;
+}
+#animate{
+  position: relative;
+  border: 2px solid black;
+  background: #336B87;
+  width: 150px;
+  text-align: center;
+  border-radius: 10px;
+
 }
