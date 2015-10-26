@@ -6,30 +6,24 @@ $(document).ready(function(){
   click = true
   values = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8]
   shuffle(values)
-  console.log(values)
   $('td').each(function(i){
     $(this).text(values[i])
   })
-  //console.log(clickCounter)
+  console.log(values)
 $('td').on("click",chooseCard)
 $('.button').on("click",resetBoard)
 
   function chooseCard(){
+    $(this).off("click")
     numOfClicks++;
     $('#clicks').text(numOfClicks)
-    //console.log(numOfClicks)
-    //console.log(clickCounter)
     clickCounter=clickCounter+1
     var cardNum=$(this).text()
     cardNums.unshift(cardNum)
     $(this).attr("class","content clicked")
-    //console.log(cardNums)
-    //console.log(clickCounter)
-    //console.log(clickCounter)
     if(clickCounter===2){
+      $('td').off("click",chooseCard)
       var match = checkForMatch(cardNums[0],cardNums[1])
-      //console.log(match)
-      //$('td').removeAttr("class","content")
       clickCounter = 0
       cardNum = []
         if(match===true){
@@ -45,26 +39,23 @@ $('.button').on("click",resetBoard)
 
 
   function checkForMatch(num1,num2){
+    setTimeout(function(){$('td').on("click",chooseCard)},2100)
     if(num1===num2){
       matches+=1
       $("#matches").text(matches)
       setTimeout(function(){$('.clicked').css('visibility','hidden')},2000)
-
-
-      //console.log(matches)
       return true;
       }
 
     else{
       setTimeout(function(){$('td').removeAttr("class","content")},2000)
-
-
       return false;
     }
   }
   function winGame(numOfClicks){
     alert("Congratulations, you win! You won the game in " + numOfClicks +" clicks." )
     resetBoard()
+
   }
     function resetBoard(){
       $('td').removeAttr("class","content")
@@ -73,7 +64,6 @@ $('.button').on("click",resetBoard)
       $('#clicks').text(numOfClicks)
       matches = 0
       $("#matches").text(matches)
-      //randomizeBoard()
       shuffle(values)
       console.log(values)
       $('td').each(function(i){
