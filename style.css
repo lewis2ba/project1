@@ -9,6 +9,8 @@ h1,h2{
   display: block;
   text-align: center;
   color: #2A3132;
+  width: 50%;
+  margin: auto;
 }
 
 
@@ -21,11 +23,11 @@ td{
   font-weight: bold;
   color: #336B87;
   cursor: pointer;
-  height: 65px;
-  width: 35px;
+  height: 50px;
+  width: 50px;
 
   /*below makes the hidden text in the table unselectable so the user cant cheat*/
-  -webkit-touch-callout: none;
+   -webkit-touch-callout: none;
    -webkit-user-select: none;
    -khtml-user-select: none;
    -moz-user-select: none;
@@ -33,7 +35,7 @@ td{
    user-select: none;
 }
 .table{
-  width: 60%;
+  width: 50%;
   margin: auto;
   border-spacing: 20px;
 }
@@ -41,7 +43,14 @@ td{
   text-align: center;
   font-weight: bold;
   color: #2A3132;
-  font-size: 40px;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+}
+
+.board{
+  width: 100%;
+  margin: auto;
 }
 html{
   background-color: grey
@@ -64,4 +73,7 @@ html{
   text-align: center;
   border-radius: 10px;
 
+}
+.row{
+  vertical-align: top;
 }

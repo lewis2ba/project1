@@ -4,21 +4,39 @@ $(document).ready(function(){
   var numOfClicks = 0
   var clickCounter=0
   click = true
-  values = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8]
+  values = ['<img class="content" src="http://www.findthatlogo.com/wp-content/gallery/superheros/thumbs/thumbs_captain-america-logo.gif"/>',
+  '<img class="content" src="http://measuredbytheheart.com/wp-content/uploads/2013/07/superman-1024x819.jpg"/>',
+  '<img class="content" src="https://s-media-cache-ak0.pinimg.com/736x/b8/ae/6d/b8ae6d84182e85add21b2f78d6d7e4fc.jpg"/>',
+  '<img class="content" src="http://www.findthatlogo.com/wp-content/gallery/superheros/thumbs/thumbs_green-lantern-logo.gif"/>',
+  '<img class="content" src="http://underscoopfire.com/wp-content/uploads/2012/08/deadpool-logo.png"/>',
+  '<img class="content" src="http://cliparts.co/cliparts/zTX/oeB/zTXoeBBLc.png"/>',
+  '<img class="content" src="http://blog.signalnoise.com/wp-content/uploads/2013/01/i_spiderman.jpg"/>',
+  '<img class="content" src="http://wallpapercave.com/wp/aTLxGYt.jpg"/>',
+  '<img class="content" src="http://www.findthatlogo.com/wp-content/gallery/superheros/thumbs/thumbs_captain-america-logo.gif"/>',
+  '<img class="content" src="http://measuredbytheheart.com/wp-content/uploads/2013/07/superman-1024x819.jpg"/>',
+  '<img class="content" src="https://s-media-cache-ak0.pinimg.com/736x/b8/ae/6d/b8ae6d84182e85add21b2f78d6d7e4fc.jpg"/>',
+  '<img class="content" src="http://www.findthatlogo.com/wp-content/gallery/superheros/thumbs/thumbs_green-lantern-logo.gif"/>',
+  '<img class="content" src="http://underscoopfire.com/wp-content/uploads/2012/08/deadpool-logo.png"/>',
+  '<img class="content" src="http://cliparts.co/cliparts/zTX/oeB/zTXoeBBLc.png"/>',
+  '<img class="content" src="http://blog.signalnoise.com/wp-content/uploads/2013/01/i_spiderman.jpg"/>',
+  '<img class="content" src="http://wallpapercave.com/wp/aTLxGYt.jpg"/>']
   shuffle(values)
   $('td').each(function(i){
-    $(this).text(values[i])
+    $(this).append(values[i])
   })
+  $('.content').css('visibility','hidden')
   console.log(values)
-$('td').on("click",chooseCard)
-$('.button').on("click",resetBoard)
-$('#animate').css('visibility','hidden')
+  $('td').on("click",chooseCard)
+  $('.button').on("click",resetBoard)
+  $('#animate').css('visibility','hidden')
   function chooseCard(){
+    $(this).find(".content").css('visibility','visible')
     $(this).off("click")
     numOfClicks++;
     $('#clicks').text(numOfClicks)
     clickCounter=clickCounter+1
-    var cardNum=$(this).text()
+    var cardNum=$(this).html()
+    console.log(cardNum)
     cardNums.unshift(cardNum)
     $(this).attr("class","content clicked")
     if(clickCounter===2){
@@ -33,6 +51,7 @@ $('#animate').css('visibility','hidden')
           }
         }
         else{
+
         }
       }
     }
@@ -43,12 +62,15 @@ $('#animate').css('visibility','hidden')
     if(num1===num2){
       matches+=1
       $("#matches").text(matches)
-      setTimeout(function(){$('.clicked').css('visibility','hidden')},2000)
+      setTimeout(function(){$('.clicked').css('visibility','hidden')
+    $('.content').css("visibility","hidden")},2000)
       return true;
       }
 
     else{
-      setTimeout(function(){$('td').removeAttr("class","content")},2000)
+      console.log(this)
+      setTimeout(function(){$('td').removeAttr("class","content")
+    $('.content').css("visibility","hidden")},2000)
       return false;
     }
   }
@@ -86,8 +108,10 @@ $('#animate').css('visibility','hidden')
       shuffle(values)
       console.log(values)
       $('td').each(function(i){
-        $(this).text(values[i])
+        $(this).empty(values[i])
+        $(this).append(values[i])
       })
+      $('.content').css("visibility","hidden")
 }
 
     function shuffle(array) {
