@@ -38,6 +38,7 @@ td{
   width: 50%;
   margin: auto;
   border-spacing: 20px;
+  /*float: left;*/
 }
 .content{
   text-align: center;
