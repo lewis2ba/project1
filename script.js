@@ -31,6 +31,7 @@ $(document).ready(function(){
   $('#animate').css('visibility','hidden')
 
   function chooseCard(){
+    $('.button').on("click",resetBoard)
     $(this).find(".content").css('visibility','visible')
     $(this).off("click")
     numOfClicks++;
@@ -42,7 +43,9 @@ $(document).ready(function(){
     $(this).attr("class","content clicked")
     if(clickCounter===2){
       $('td').off("click",chooseCard)
+      $('.button').off("click",resetBoard)
       var match = checkForMatch(cardNums[0],cardNums[1])
+      setTimeout(function(){$('.button').on("click",resetBoard)},2000)
       clickCounter = 0
       cardNum = []
         if(match===true){
@@ -58,6 +61,7 @@ $(document).ready(function(){
 
 
   function checkForMatch(num1,num2){
+
     setTimeout(function(){$('td').on("click",chooseCard)},2100)
     if(num1===num2){
       matches+=1
