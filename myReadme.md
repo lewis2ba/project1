@@ -2,4 +2,6 @@ I used HTML, CSS, and JS/jQuery to complete this project. I used html to set up 
 
 My approach was first to built a simple board using html and give it basic functionality, like the numbers appear when clicked. After this I was able to make the game more like the Concentration game we are all familiar with. I was able to make the "cards" disappear when a match was made, I added a win condition when a certain number of matches were made, and I added a board reset button, and I replaced the numbered "cards" with cards with images. I added limited css at this time to make it look presentable. Finally I added more css to make it more visually appealing and a very basic animation for when the player wins.
 
+To play my game simply go to the website, click on the cards and try to make matches. To reset the board click the reset button. The game will also reset after the user has won the game
+
 I had one thing that I would have liked to added to the game besides trying to make it look better and that was a flipping animation. I would have liked to have the cards flip to reveal the image when the user clicks on them.
