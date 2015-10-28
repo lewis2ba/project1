@@ -25,10 +25,11 @@ $(document).ready(function(){
     $(this).append(values[i])
   })
   $('.content').css('visibility','hidden')
-  console.log(values)
+  // console.log(values)
   $('td').on("click",chooseCard)
   $('.button').on("click",resetBoard)
   $('#animate').css('visibility','hidden')
+
   function chooseCard(){
     $(this).find(".content").css('visibility','visible')
     $(this).off("click")
@@ -51,7 +52,6 @@ $(document).ready(function(){
           }
         }
         else{
-
         }
       }
     }
@@ -63,17 +63,18 @@ $(document).ready(function(){
       matches+=1
       $("#matches").text(matches)
       setTimeout(function(){$('.clicked').css('visibility','hidden')
-    $('.content').css("visibility","hidden")},2000)
+      $('.content').css("visibility","hidden")},2000)
       return true;
       }
 
     else{
       console.log(this)
       setTimeout(function(){$('td').removeAttr("class","content")
-    $('.content').css("visibility","hidden")},2000)
+      $('.content').css("visibility","hidden")},2000)
       return false;
-    }
+      }
   }
+
   function winGame(numOfClicks){
     $('#animate').css('visibility','visible')
     $('#animate').text("Congratulations! You won in "+numOfClicks+" clicks!")
@@ -97,38 +98,39 @@ $(document).ready(function(){
      setTimeout(goRight, 50);
      setTimeout(function(){resetBoard()},5000)
   }
-    function resetBoard(){
-      $('td').removeAttr("class","content")
-      $('td').css('visibility','visible')
-      $('#animate').css('visibility','hidden')
-      numOfClicks = 0
-      $('#clicks').text(numOfClicks)
-      matches = 0
-      $("#matches").text(matches)
-      shuffle(values)
-      console.log(values)
-      $('td').each(function(i){
-        $(this).empty(values[i])
-        $(this).append(values[i])
-      })
-      $('.content').css("visibility","hidden")
-}
 
-    function shuffle(array) {
-      var currentIndex = array.length, temporaryValue, randomIndex ;
+  function resetBoard(){
+    $('td').removeAttr("class","content")
+    $('td').css('visibility','visible')
+    $('#animate').css('visibility','hidden')
+    numOfClicks = 0
+    $('#clicks').text(numOfClicks)
+    matches = 0
+    $("#matches").text(matches)
+    shuffle(values)
+    //console.log(values)
+    $('td').each(function(i){
+    $(this).empty(values[i])
+    $(this).append(values[i])
+    })
+    $('.content').css("visibility","hidden")
+  }
 
-      // While there remain elements to shuffle...
-      while (0 !== currentIndex) {
+  function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex ;
 
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
 
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-      }
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+    }
 
     return array;
   }
