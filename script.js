@@ -100,12 +100,16 @@ $(document).ready(function(){
   }
 
   function resetBoard(){
+    $('td').off("click",chooseCard)
+    $('td').on("click",chooseCard)
+    numOfClicks = 0
+    clickCounter=0
+    matches = 0
     $('td').removeAttr("class","content")
+    $('td').removeAttr("class","clicked")
     $('td').css('visibility','visible')
     $('#animate').css('visibility','hidden')
-    numOfClicks = 0
     $('#clicks').text(numOfClicks)
-    matches = 0
     $("#matches").text(matches)
     shuffle(values)
     //console.log(values)
